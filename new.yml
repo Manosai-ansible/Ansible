@@ -1,0 +1,11 @@
+---
+- name: Log rotation
+  hosts: all
+  become: true
+  become_user: ansible
+  user: root
+  tasks:
+    - name: copy the script
+      copy: src=/statlog/statlog.sh  dest=/statlog/statlog.sh mode=0777
+    - name: Run the script
+      script: /statlog/statlog.sh
