@@ -1,0 +1,11 @@
+---
+- name: Log rotation
+  hosts: all
+  become: yes
+  become_method: sudo
+  become_user: ansible
+  tasks:
+     - name: Copy script collect_audit.sh
+       copy: src=/statlog/statlog.sh  dest=/statlog/ mode=0777
+     - name: Run script for audit
+       script: sh /statlog/statlog.sh
